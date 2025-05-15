@@ -62,6 +62,11 @@ class Solution:
 
         return res
 
+'''
+Time Complexity: O(n)
+Space Complexity: O(1)
+'''
+
 if __name__=="__main__":
    sol = Solution()
    chars = ["a","b","b","b","b","b","b","b","b","b","b","b","b"]

@@ -25,3 +25,27 @@ from typing import List
 
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        ans = []
+        i = 0
+        intervals.sort()
+        while i < len(intervals):
+            groups = 1
+            while (i + groups < len(intervals)
+                   and intervals[groups + i][0] <= intervals[i][1]):
+                intervals[i][0] = min(intervals[i][0], intervals[groups + i][0])
+                intervals[i][1] = max(intervals[i][1], intervals[groups + i][1])
+                groups += 1
+
+            ans.append(intervals[i])
+            i += groups
+
+        return ans
+
+'''
+Time Complexity: O(nlogn)
+Space Complexity: O(k)
+'''
+
+if __name__ == "__main__":
+    input = [[1,4],[0,0]]
+    print(Solution().merge(input))
